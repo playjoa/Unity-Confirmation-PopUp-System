@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using PopUps;
 using UnityEngine;
+using PopUps.Data;
 
 namespace PopUps.Controllers
 {
@@ -28,10 +29,10 @@ namespace PopUps.Controllers
         }
 
         public void RequestConfirmationPopUp(string confirmMessage, Action onConfirm, Action onCancel,
-            string confirmText = "", string cancelText = "")
+            ConfirmationButtons buttonConfig = ConfirmationButtons.ConfirmCancel)
         {
             var confirmPopUpInitializeData =
-                new ConfirmationPopUpData(confirmMessage, onConfirm, onCancel, confirmText, cancelText);
+                new ConfirmationPopUpData(confirmMessage, onConfirm, onCancel, buttonConfig);
             EnqueuePopUp(confirmPopUpInitializeData);
         }
 
