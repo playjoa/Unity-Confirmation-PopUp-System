@@ -1,6 +1,7 @@
 # Unity_Confirmation_PopUp_System
 
-## Easily Request as many Confirmation PopUps as you wan
+## Easily Request as many Confirmation PopUps as you want
+* It manages PopUp requests and shows them in order!
 
 ```C#
 private void ShowPopUp()
