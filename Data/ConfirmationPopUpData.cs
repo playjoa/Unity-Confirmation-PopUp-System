@@ -10,7 +10,7 @@ namespace PopUps.Data
         public Action OnCancel { get; private set; }
 
         public ConfirmationPopUpData(string confirmationDescription, Action confirm, Action cancel,
-            ConfirmationButtons buttonConfig = ConfirmationButtons.ConfirmCancel)
+            ConfirmationButtons buttonConfig = ConfirmationButtons.OkCancel)
         {
             ConfirmationDescription = confirmationDescription;
             OnConfirm = confirm;
