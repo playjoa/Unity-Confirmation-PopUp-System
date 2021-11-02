@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
+using TweenerSystem;
 
-namespace Gameplay.UI_System.PopUps
+namespace PopUps.Base
 {
     public abstract class PopUp<T> : MonoBehaviour where T : struct
     {
-        [Header("Animation Components")] [SerializeField]
-        protected TweenerAnimation tweenAnimation;
+        [Header("Animation Components")] 
+        [SerializeField] protected LeanTweenerAnimation tweenAnimation;
 
         public bool IsShowing => gameObject.activeSelf;
         
