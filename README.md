@@ -7,15 +7,12 @@
 private void ShowPopUp()
 {
     var popUpDescription = "Do you wish to do this?";
-    var confirmButtonText = "YES";
-    var cancelButtonText = "NO";
 
     ConfirmationPopUpController.ME.RequestConfirmationPopUp(
         popUpDescription, 
         OnConfirm,
         OnCancel,
-        confirmButtonText,
-        cancelButtonText);
+        ConfirmationButtons.YesNo);
 }
 
 private void OnConfirm()
