@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 
 namespace PopUps.Data
 {
@@ -10,7 +10,7 @@ namespace PopUps.Data
         public Action OnCancel { get; private set; }
 
         public ConfirmationPopUpData(string confirmationDescription, Action confirm, Action cancel,
-            ConfirmationButtons buttonConfig = ConfirmationButtons.OkCancel)
+            ConfirmationButtons buttonConfig = ConfirmationButtons.ConfirmCancel)
         {
             ConfirmationDescription = confirmationDescription;
             OnConfirm = confirm;

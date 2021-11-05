@@ -1,7 +1,9 @@
 ﻿using System;
+using PopUps.Base;
+using PopUps.Data;
 using TMPro;
+using TweenerSystem;
 using UnityEngine;
-using PopUps.Utils;
 
 namespace PopUps
 {

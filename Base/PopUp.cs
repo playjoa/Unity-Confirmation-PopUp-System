@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using TweenerSystem;
+﻿using TweenerSystem;
+using UnityEngine;
 
 namespace PopUps.Base
 {
@@ -7,6 +7,7 @@ namespace PopUps.Base
     {
         [Header("Animation Components")] 
         [SerializeField] protected LeanTweenerAnimation tweenAnimation;
+        [SerializeField] protected LeanTweenerUISlideAnimation tweenUISlideAnimation;
 
         public bool IsShowing => gameObject.activeSelf;
         
@@ -16,13 +17,11 @@ namespace PopUps.Base
 
         public virtual void CloseWithAnimation()
         {
-            if (!tweenAnimation)
-            {
-                Debug.LogError($"No TweenAnimation on {gameObject.name}");
-                return;
-            }
-
-            tweenAnimation.CloseAnimation();
+            if (tweenAnimation)
+                tweenAnimation.CloseAnimation();
+            
+            if(tweenUISlideAnimation)
+                tweenUISlideAnimation.SlideOut();
         }
     }
 }
