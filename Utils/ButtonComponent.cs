@@ -2,18 +2,21 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Button))]
-public class ButtonComponent : MonoBehaviour
+namespace PopUps.Utils
 {
-    [SerializeField] private Button thisButton;
-    [SerializeField] private TextMeshProUGUI thisButtonText;
-    
-    public Button Button => thisButton;
-    public TextMeshProUGUI ButtonText => thisButtonText;
-
-    private void OnValidate()
+    [RequireComponent(typeof(Button))]
+    public class ButtonComponent : MonoBehaviour
     {
-        thisButton = GetComponent<Button>();
-        thisButtonText = GetComponentInChildren<TextMeshProUGUI>();
+        [SerializeField] private Button thisButton;
+        [SerializeField] private TextMeshProUGUI thisButtonText;
+
+        public Button Button => thisButton;
+        public TextMeshProUGUI ButtonText => thisButtonText;
+
+        private void OnValidate()
+        {
+            thisButton = GetComponent<Button>();
+            thisButtonText = GetComponentInChildren<TextMeshProUGUI>();
+        }
     }
 }
