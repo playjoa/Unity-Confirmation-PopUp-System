@@ -2,8 +2,8 @@
 using PopUps.Base;
 using PopUps.Data;
 using TMPro;
-using TweenerSystem;
 using UnityEngine;
+using Utils.UI;
 
 namespace PopUps
 {
@@ -19,14 +19,14 @@ namespace PopUps
 
         private void Awake()
         {
-            confirmButton.Button.onClick.AddListener(OnConfirmClick);
-            cancelButton.Button.onClick.AddListener(OnCancelClick);
+            confirmButton.onClick.AddListener(OnConfirmClick);
+            cancelButton.onClick.AddListener(OnCancelClick);
         }
 
         private void OnDestroy()
         {
-            confirmButton.Button.onClick.RemoveAllListeners();
-            cancelButton.Button.onClick.RemoveAllListeners();
+            confirmButton.onClick.RemoveListener(OnConfirmClick);
+            cancelButton.onClick.RemoveListener(OnCancelClick);
         }
 
         public override void Initiate(ConfirmationPopUpData initializeData)
@@ -36,19 +36,27 @@ namespace PopUps
             descriptionText.text = initializeData.ConfirmationDescription;
             onConfirm = initializeData.OnConfirm;
             onCancel = initializeData.OnCancel;
-            confirmButton.ButtonText.text = initializeData.ConfirmText();
-            cancelButton.ButtonText.text = initializeData.CancelText();
+            confirmButton.Text.text = initializeData.ConfirmText();
+            cancelButton.Text.text = initializeData.CancelText();
+        }
+
+        private void ResetActions()
+        {
+            onConfirm = null;
+            onCancel = null;
         }
 
         private void OnConfirmClick()
         {
             onConfirm?.Invoke();
+            ResetActions();
             CloseWithAnimation();
         }
 
         private void OnCancelClick()
         {
             onCancel?.Invoke();
+            ResetActions();
             CloseWithAnimation();
         }
     }
