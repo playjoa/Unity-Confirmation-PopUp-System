@@ -2,9 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using PopUps;
-using UnityEngine;
 using PopUps.Data;
+using UnityEngine;
 
 namespace PopUps.Controllers
 {
@@ -28,7 +27,7 @@ namespace PopUps.Controllers
             DestroyImmediate(this);
         }
 
-        public void RequestConfirmationPopUp(string confirmMessage, Action onConfirm, Action onCancel,
+        public void RequestConfirmationPopUp(string confirmMessage, Action onConfirm, Action onCancel = null,
             ConfirmationButtons buttonConfig = ConfirmationButtons.ConfirmCancel)
         {
             var confirmPopUpInitializeData =
