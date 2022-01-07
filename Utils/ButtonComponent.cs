@@ -4,19 +4,31 @@ using UnityEngine.UI;
 
 namespace PopUps.Utils
 {
-    [RequireComponent(typeof(Button))]
-    public class ButtonComponent : MonoBehaviour
+    public class ButtonComponent : Button
     {
-        [SerializeField] private Button thisButton;
-        [SerializeField] private TextMeshProUGUI thisButtonText;
+        [SerializeField] private Image thisImage;
+        [SerializeField] private TextMeshProUGUI thisText;
+        [SerializeField] private ButtonTweenAnimations thisButtonAnimations;
+        
+        public Image Image => thisImage;
+        public TextMeshProUGUI Text => thisText;
+        public ButtonTweenAnimations ButtonAnimations => thisButtonAnimations;
 
-        public Button Button => thisButton;
-        public TextMeshProUGUI ButtonText => thisButtonText;
+        private const string TextName = "txtButtonInfo";
 
         private void OnValidate()
         {
-            thisButton = GetComponent<Button>();
-            thisButtonText = GetComponentInChildren<TextMeshProUGUI>();
+            thisImage = GetComponent<Image>();
+            thisText = GetComponentInChildren<TextMeshProUGUI>();
+            thisButtonAnimations = GetComponent<ButtonTweenAnimations>();
+
+            if (thisButtonAnimations == null)
+                thisButtonAnimations = gameObject.AddComponent<ButtonTweenAnimations>();
+            
+            if (thisText) thisText.name = TextName;
         }
+
+        public void Disable() => interactable = false;
+        public void Enable() => interactable = true;
     }
 }
